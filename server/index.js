@@ -15,6 +15,10 @@ const typeDefs = readFileSync('./schema/schema.graphql').toString('utf-8');
 const server = new ApolloServer({
   resolvers,
   typeDefs,
+  // https://www.apollographql.com/docs/apollo-server/data/resolvers/
+  context: ({req}) => ({
+    authorization: req.headers.authorization,
+  }),
 });
 
 server.applyMiddleware({app});

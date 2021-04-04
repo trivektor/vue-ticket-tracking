@@ -4,19 +4,14 @@
 
 <script>
 import { provide } from 'vue'
-import { ApolloClient, InMemoryCache } from '@apollo/client' 
-import { DefaultApolloClient } from '@vue/apollo-composable'
 
-// https://github.com/learnwithjason/vue-3-and-apollo-client-3/blob/main/src/main.js
-const defaultClient = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
-  cache: new InMemoryCache()
-})
+import {DefaultApolloClient} from '@vue/apollo-composable';
+import apolloClient from './apollo-client';
 
 export default {
   name: 'App',
   setup() {
-    provide(DefaultApolloClient, defaultClient)    
+    provide(DefaultApolloClient, apolloClient)    
   },
 }
 </script>

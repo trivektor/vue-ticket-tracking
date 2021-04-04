@@ -30,10 +30,13 @@ export default {
   methods: {
     async onSubmit() {
       try {
-        await this.register({
+        const {data} = await this.register({
           username: this.$data.username,
           password: this.$data.password,
         });
+
+        // JWT token
+        localStorage.setItem('jwtToken', data.register);
       } catch (err) {
         // TODO: not use alert
         alert(err.toString());
