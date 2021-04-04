@@ -1,0 +1,44 @@
+<template>
+  <form @submit.prevent="onSubmit">
+    <label>Username</label>  
+    <div>
+      <input type="text" v-model="username" autofocus />
+    </div>
+    <label>Password</label>
+    <div>
+      <input type="password" v-model="password" />
+    </div>
+    <div>
+      <button type="submit">Submit</button>
+    </div>
+  </form>
+</template>
+
+<script>
+import {useMutation} from '@vue/apollo-composable';
+import {registerMutation} from '../graphql/mutations';
+
+export default {
+  setup() {
+    const {mutate: register} = useMutation(registerMutation)
+
+    return {register};
+  },
+  data() {
+    return {username: '', password: ''};
+  },
+  methods: {
+    async onSubmit() {
+      try {
+        await this.register({
+          username: this.$data.username,
+          password: this.$data.password,
+        });
+      } catch (err) {
+        // TODO: not use alert
+        alert(err.toString());
+      }
+    },
+  },
+};
+</script>

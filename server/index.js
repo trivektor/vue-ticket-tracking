@@ -1,8 +1,13 @@
 import {ApolloServer} from 'apollo-server-express';
 import express from 'express';
 import {readFileSync} from 'fs';
+import mongoose from 'mongoose'
 
 import resolvers from './resolvers';
+
+require('dotenv').config();
+
+mongoose.connect(process.env.MONGO_URL, {useUnifiedTopology: true});
 
 const app = express();
 const typeDefs = readFileSync('./schema/schema.graphql').toString('utf-8');
