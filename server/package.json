@@ -1,0 +1,17 @@
+{
+  "name": "vue-ticket-tracking-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "apollo-server": "^2.22.1",
+    "apollo-server-express": "^2.22.1",
+    "esm": "^3.2.25",
+    "graphql": "^15.5.0"
+  }
+}

@@ -8,8 +8,14 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
+    "@vue/composition-api": "^1.0.0-rc.6",
+    "apollo-server-express": "^2.22.1",
+    "bcrypt": "^5.0.1",
     "core-js": "^3.6.5",
-    "vue": "^3.0.0"
+    "express": "^4.17.1",
+    "mongoose": "^5.12.2",
+    "vue": "^3.0.0",
+    "vue-router": "^4.0.5"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
