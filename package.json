@@ -9,17 +9,21 @@
   },
   "dependencies": {
     "@apollo/client": "^3.3.13",
+    "@tailwindcss/postcss7-compat": "^2.0.2",
     "@vue/apollo-composable": "^4.0.0-alpha.12",
     "@vue/composition-api": "^1.0.0-rc.6",
     "apollo-link-http": "^1.5.17",
     "apollo-server-express": "^2.22.1",
+    "autoprefixer": "^9",
     "bcrypt": "^5.0.1",
     "core-js": "^3.6.5",
     "express": "^4.17.1",
     "graphql": "^15.5.0",
     "graphql-tag": "^2.11.0",
     "mongoose": "^5.12.2",
+    "postcss": "^7",
     "react": "^17.0.2",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.2",
     "vue": "^3.0.0",
     "vue-router": "^4.0.5",
     "vuex": "^4.0.0"
@@ -31,7 +35,8 @@
     "@vue/compiler-sfc": "^3.0.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.7.2",
-    "eslint-plugin-vue": "^7.0.0"
+    "eslint-plugin-vue": "^7.0.0",
+    "vue-cli-plugin-tailwind": "~2.0.6"
   },
   "eslintConfig": {
     "root": true,

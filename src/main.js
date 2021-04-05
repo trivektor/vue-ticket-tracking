@@ -4,6 +4,7 @@ import {createRouter, createWebHistory} from 'vue-router';
 import store from './store';
 import routes from './routes';
 import App from './App.vue';
+import './assets/tailwind.css'
 
 const router = createRouter({
   history: createWebHistory(),
