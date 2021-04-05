@@ -17,6 +17,11 @@ const store = createStore({
     SET_CURRENT_USER(state, currentUser) {
       state.currentUser = currentUser;
     },
+    LOGOUT_USER(state) {
+      state.jwtToken = undefined;
+      state.isLoggedIn = false;
+      state.currentUser = null;
+    },
   },
   actions: {
     async login({dispatch}, {username, password}) {
@@ -27,9 +32,12 @@ const store = createStore({
       });
 
       localStorage.setItem('jwtToken', data.login);
-      dispatch('getUser');
+      dispatch('getCurrentUser');
     },
-    async getUser({commit}) {
+    logout({commit}) {
+      commit('LOGOUT_USER');
+    },
+    async getCurrentUser({commit}) {
       const {data} = await apolloClient.query({
         query: getCurrentUser,
       });
