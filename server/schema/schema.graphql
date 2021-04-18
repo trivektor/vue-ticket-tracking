@@ -3,9 +3,16 @@ type User {
   username: String
 }
 
+type Project {
+  id: String
+  name: String
+  description: String
+}
+
 type Mutation {
   register(username: String!, password: String!): String
   login(username: String!, password: String!): String
+  createProject(name: String!, description: String): Project
 }
 
 type Query {
@@ -13,6 +20,6 @@ type Query {
 }
 
 schema {
-  mutation: Mutation,
+  mutation: Mutation
   query: Query
 }

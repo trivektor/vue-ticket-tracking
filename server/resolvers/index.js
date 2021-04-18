@@ -1,6 +1,7 @@
 import register from './register';
 import login from './login';
 import getCurrentUser from './get-current-user';
+import createProject from './create-project';
 
 const resolvers = {
   Query: {
@@ -9,6 +10,7 @@ const resolvers = {
   Mutation: {
     register,
     login,
+    createProject,
   },
 };
 

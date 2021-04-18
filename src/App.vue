@@ -1,17 +1,24 @@
 <template>
-  <router-view />
+  <app-header />
+  <section class="p-5">
+    <router-view />
+  </section>
 </template>
 
 <script>
-import { provide } from 'vue'
+import { provide } from "vue";
+import { DefaultApolloClient } from "@vue/apollo-composable";
 
-import {DefaultApolloClient} from '@vue/apollo-composable';
-import apolloClient from './apollo-client';
+import apolloClient from "./apollo-client";
+import AppHeader from "./components/AppHeader.vue";
 
 export default {
-  name: 'App',
-  setup() {
-    provide(DefaultApolloClient, apolloClient)    
+  name: "App",
+  components: {
+    AppHeader,
   },
-}
+  setup() {
+    provide(DefaultApolloClient, apolloClient);
+  },
+};
 </script>
