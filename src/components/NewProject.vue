@@ -5,11 +5,12 @@
 
 <script>
 import { useMutation } from "@vue/apollo-composable";
+import { defineComponent } from "@vue/composition-api";
+
 import ProjectForm from "./ProjectForm.vue";
 import { createProjectMutation } from "../graphql/mutations";
-//import { createProjectMutation } from "../graphql/mutations";
 
-export default {
+export default defineComponent({
   setup() {
     const { mutate: createProject } = useMutation(createProjectMutation);
 
@@ -20,10 +21,8 @@ export default {
   },
   methods: {
     async onSubmit({ name, description }) {
-      const data = await this.createProject({ name, description });
-
-      console.log({ data });
+      await this.createProject({ name, description });
     },
   },
-};
+});
 </script>

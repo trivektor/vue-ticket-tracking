@@ -26,13 +26,14 @@
 //import gql from "graphql-tag";
 
 export default {
-  apollo: {},
   props: {
     initialName: String,
+    initialDescription: String,
   },
   data() {
     return {
       name: this.initialName,
+      description: this.initialDescription,
     };
   },
   methods: {

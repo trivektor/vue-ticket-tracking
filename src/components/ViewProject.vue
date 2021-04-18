@@ -1,36 +1,28 @@
 <template>
   <div v-if="loading">Loading...</div>
-  <div v-else-if="project">
-    <project-form
-      :initialName="project.name"
-      :initialDescription="project.description"
-    />
-  </div>
+  <section v-else-if="project">
+    <h2>{{ project.name }}</h2>
+    <p>{{ project.description }}</p>
+  </section>
 </template>
 
 <script>
 import { useQuery, useResult } from "@vue/apollo-composable";
-import { defineComponent } from "@vue/composition-api";
 import { useRoute } from "vue-router";
 
+import { defineComponent } from "@vue/composition-api";
 import { projectQuery } from "../graphql/queries";
-import ProjectForm from "./ProjectForm.vue";
 
 export default defineComponent({
-  components: {
-    ProjectForm,
-  },
   setup() {
     const route = useRoute();
+
     const { result, loading } = useQuery(projectQuery, {
       id: route.params.id,
     });
-    const project = useResult(result, null, ({ project }) => project);
+    const project = useResult(result, null, (data) => data.project);
 
-    return {
-      loading,
-      project,
-    };
+    return { loading, project };
   },
 });
 </script>

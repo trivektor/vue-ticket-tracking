@@ -5,7 +5,8 @@ const Project = mongoose.model(
   new mongoose.Schema(
     {
       name: String,
-      description: String
+      description: String,
+      created_by: String
     },
     {
       timestamps: {

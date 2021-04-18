@@ -1,3 +1,10 @@
+type PageInfo {
+  hasNextPage: Boolean!
+  hasPreviousPage: Boolean!
+  startCursor: String
+  endCursor: String
+}
+
 type User {
   id: String
   username: String
@@ -7,6 +14,16 @@ type Project {
   id: String
   name: String
   description: String
+  created_by: String
+}
+
+type ProjectEdge {
+  node: Project
+}
+
+type ProjectConnection {
+  pageInfo: PageInfo!
+  edges: [ProjectEdge]
 }
 
 type Mutation {
@@ -17,6 +34,8 @@ type Mutation {
 
 type Query {
   getCurrentUser: User
+  project(id: String!): Project
+  projects: ProjectConnection
 }
 
 schema {
