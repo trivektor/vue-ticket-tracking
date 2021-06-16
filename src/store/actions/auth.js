@@ -3,7 +3,7 @@ import { loginMutation } from "../../graphql/mutations";
 import { getCurrentUser } from "../../graphql/queries";
 
 const authActions = {
-  login: async function({ dispatch }, { username, password }) {
+  async login({ dispatch }, { username, password }) {
     // https://blog.logrocket.com/handling-authentication-in-your-graphql-powered-vue-app/
     const { data } = await apolloClient.mutate({
       mutation: loginMutation,
@@ -14,11 +14,11 @@ const authActions = {
     dispatch("getCurrentUser");
   },
 
-  logout: function({ commit }) {
+  logout({ commit }) {
     commit("LOGOUT_USER");
   },
 
-  getCurrentUser: async function({ commit }) {
+  async getCurrentUser({ commit }) {
     const { data } = await apolloClient.query({
       query: getCurrentUser,
     });

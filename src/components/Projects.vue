@@ -32,26 +32,44 @@
 </template>
 
 <script>
-import { useQuery, useResult } from "@vue/apollo-composable";
 import { defineComponent } from "@vue/composition-api";
-import { map } from "lodash";
-
-import { projectsQuery } from "../graphql/queries";
+// https://codeburst.io/vuex-getters-are-great-but-dont-overuse-them-9c946689b414
+import { mapState } from "vuex";
 
 export default defineComponent({
-  setup() {
-    const { result, loading } = useQuery(projectsQuery);
-    const projects = useResult(result, null, (data) =>
-      map(data.projects.edges, "node").map((project) => ({
+  mounted() {
+    this.$store.dispatch("fetchProjects");
+  },
+  computed: mapState({
+    projects(state) {
+      return state.projects.map((project) => ({
         ...project,
         href: `/project/${project.id}`,
-      }))
-    );
-
-    return {
-      projects,
-      loading,
-    };
-  },
+      }));
+    },
+  }),
 });
+
+// import { useQuery, useResult } from "@vue/apollo-composable";
+// import { defineComponent } from "@vue/composition-api";
+// import { map } from "lodash";
+
+// import { projectsQuery } from "../graphql/queries";
+
+// export default defineComponent({
+//   setup() {
+//     const { result, loading } = useQuery(projectsQuery);
+//     const projects = useResult(result, null, (data) =>
+//       map(data.projects.edges, "node").map((project) => ({
+//         ...project,
+//         href: `/project/${project.id}`,
+//       }))
+//     );
+
+//     return {
+//       projects,
+//       loading,
+//     };
+//   },
+// });
 </script>
