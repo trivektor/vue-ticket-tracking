@@ -14,7 +14,7 @@ const router = createRouter({
 router.beforeEach((to, from, next) => {
   const isLoggedIn = store.getters.isLoggedIn;
 
-  if (to.matched.some((entry) => entry.requiresAuth)) {
+  if (to.matched.some((entry) => entry.meta?.requiresAuth)) {
     if (isLoggedIn) {
       store.dispatch('getCurrentUser');
       next();
