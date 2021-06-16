@@ -1,10 +1,10 @@
-import {createApp} from 'vue';
-import {createRouter, createWebHistory} from 'vue-router';
+import { createApp } from "vue";
+import { createRouter, createWebHistory } from "vue-router";
 
-import store from './store';
-import routes from './routes';
-import App from './App.vue';
-import './assets/tailwind.css';
+import store from "./store";
+import routes from "./routes";
+import App from "./App.vue";
+import "./assets/tailwind.css";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -16,15 +16,15 @@ router.beforeEach((to, from, next) => {
 
   if (to.matched.some((entry) => entry.meta?.requiresAuth)) {
     if (isLoggedIn) {
-      store.dispatch('getCurrentUser');
+      store.dispatch("getCurrentUser");
       next();
     } else {
-      store.dispatch('logout');
+      store.dispatch("logout");
 
-      next({path: '/login'});
+      next({ path: "/login" });
     }
   } else {
-    store.dispatch('getCurrentUser');
+    store.dispatch("getCurrentUser");
     next();
   }
 });
@@ -32,4 +32,4 @@ router.beforeEach((to, from, next) => {
 createApp(App)
   .use(router)
   .use(store)
-  .mount('#app');
+  .mount("#app");
